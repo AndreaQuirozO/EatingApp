@@ -1,0 +1,38 @@
+#:import utils kivy.utils
+
+<HomeScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#39B3F2")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            #User welcome Label
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .2
+            text: "Hi, Andrea"
+            id: welcome_user_label
+        GridLayout:
+            #Display days
+            pos_hint: {"top": 0.8, "left": 1}
+            size_hint: 1, .2
+            LabelButton:
+                text: "[u]Settings[/u]"
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex("#35477d")
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                markup: True
+                on_release:
+                    app.change_screen("meal_screen", direction='right', mode='push')
+        GridLayout:
+            #Display meal
+            pos_hint: {"top": 0.6, "left": 1}
+            size_hint: 1, .5
+            Button:
+                text: "Comida"
+                on_release: app.change_screen('meal_screen')
